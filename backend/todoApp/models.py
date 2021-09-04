@@ -20,13 +20,17 @@ class TodoBoard(models.Model):
 
 
 class Todo(models.Model):
-    board = models.ForeignKey(
-        TodoBoard, verbose_name='대상 보드', on_delete=models.CASCADE)
+    board = models.ForeignKey(TodoBoard, verbose_name='대상 보드',
+                              null=False, blank=False,
+                              on_delete=models.CASCADE, related_name='todo_list')
 
     created_at = models.DateTimeField(
         auto_now_add=True, verbose_name='생성 일자/시각')
 
     content = models.TextField(null=False, blank=False, verbose_name='내용')
+
+    done = models.BooleanField(
+        null=False, blank=False, default=False, verbose_name='완료 여부')
 
     class Meta:
         verbose_name = 'Todo'

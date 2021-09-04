@@ -29,7 +29,9 @@ DEBUG = True
 ALLOWED_HOSTS = []
 
 
-# Application definition
+SERVICES_APPS = [
+    'todoApp.apps.TodoappConfig',
+]
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -38,7 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-]
+] + SERVICES_APPS
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

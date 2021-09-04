@@ -1,9 +1,11 @@
+import React from 'react';
 import './App.css';
+import TodoContainer from './TodoContainer';
 
 function App() {
   return (
     <div>
-      Test done!
+      <TodoContainer />
     </div>
   );
 }

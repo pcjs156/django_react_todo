@@ -6,11 +6,19 @@ import TodoList from './TodoList';
 import './TodoContainer.css';
 
 class TodoContainer extends Component {
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            boardName: props.boardName,
+            todoList: props.todoList
+        };
+    }
     render() {
         return (
             <Container maxWidth="sm" className="todo-container">
-                <div>Todo List</div>
-                <TodoList></TodoList>
+                <div>{this.state.boardName}</div>
+                <TodoList todoList={this.state.todoList} />
             </Container>
         )
     }

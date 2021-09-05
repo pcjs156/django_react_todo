@@ -3,9 +3,10 @@ import './App.css';
 import TodoContainer from './TodoContainer';
 
 function App() {
+  console.log(window.itemObjects);
   return (
     <div>
-      <TodoContainer />
+      <TodoContainer boardName={window.name} todoList={window.todoList} />
     </div>
   );
 }

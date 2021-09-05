@@ -12,19 +12,21 @@ import { ListItemSecondaryAction } from '@material-ui/core';
 
 
 class TodoList extends Component {
-    itemObjects = [
-        { id: 1, content: '햄찌사랑' },
-        { id: 2, content: '민수사랑' },
-        { id: 3, content: '김찌사랑' },
-    ];
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            todoList: props.todoList
+        };
+    }
 
     render() {
         return (
             <List>
-                {this.itemObjects.map((item) => {
+                {this.state.todoList.map((item) => {
                     return (
                         <ListItem key={item.id}>
-                            <Checkbox edge="start" />
+                            <Checkbox edge="start" checked={item.done} />
                             <ListItemText primary={`Item ${item.id} : Content (${item.content})`} />
                             <ListItemSecondaryAction>
                                 <IconButton edge="end" aria-label="edit">

@@ -28,6 +28,21 @@
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
+    <script type="text/javascript">
+      window.name = "{{board.name}}";
+      console.log(window.name);
+
+      window.todoList = [];
+      {% for todo in board.todo_list.all %}
+      window.todoList.push({
+          created_at: "{{todo.created_at}}",
+          content: "{{todo.content}}",
+          done: "{{todo.done}}" === 'True' ? true : false,
+          id: "{{todo.pk}}"
+      })
+      {% endfor %}
+      console.log(window.todoList);
+  </script>
     <div id="root"></div>
     <!--
       This HTML file is a template.

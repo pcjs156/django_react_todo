@@ -29,18 +29,33 @@
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <script type="text/javascript">
-      window.name = "{{board.name}}";
-      console.log(window.name);
-
+      /* 이하 FE 테스트용 데이터 */
+      window.name = "테스트 보드";
       window.todoList = [];
-      {% for todo in board.todo_list.all %}
-      window.todoList.push({
-          created_at: "{{todo.created_at}}",
-          content: "{{todo.content}}",
-          done: "{{todo.done}}" === 'True' ? true : false,
-          id: "{{todo.pk}}"
-      })
-      {% endfor %}
+      for (let i=1; i<5; i++) {
+        window.todoList.push({
+          created_at: '2021/03/25 13:20:40',
+          content: '내용 ' + i,
+          done: i % 2 === 0 ? true : false,
+          id: i
+        });
+      }
+      /* 이상 FE 테스트용 데이터 */
+
+      /* 이하 BE 연동용 데이터 */
+      // window.name = "{{board.name}}";
+      // window.todoList = [];
+      // {% for todo in board.todo_list.all %}
+      // window.todoList.push({
+      //     created_at: "{{todo.created_at}}",
+      //     content: "{{todo.content}}",
+      //     done: "{{todo.done}}" === 'True' ? true : false,
+      //     id: "{{todo.pk}}"
+      // })
+      // {% endfor %}
+      /* 이상 BE 연동용 데이터 */
+
+      console.log(window.name);
       console.log(window.todoList);
   </script>
     <div id="root"></div>
